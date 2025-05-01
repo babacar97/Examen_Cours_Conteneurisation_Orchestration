@@ -1,0 +1,511 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-04-30T23:57:20Z"
+    generateName: flask-k8s-deployment-6cf6cff6dd-
+    labels:
+      app: flask-k8s
+      pod-template-hash: 6cf6cff6dd
+    name: flask-k8s-deployment-6cf6cff6dd-dd5v9
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: flask-k8s-deployment-6cf6cff6dd
+      uid: c9246687-a6ca-454b-b0f1-9ccdd5f62c1d
+    resourceVersion: "45972"
+    uid: c8ca6108-b679-4ed6-be7c-fb6b25580efc
+  spec:
+    containers:
+    - env:
+      - name: MESSAGE
+        valueFrom:
+          configMapKeyRef:
+            key: MESSAGE
+            name: flask-config
+      - name: DB_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            key: DB_PASSWORD
+            name: flask-secret
+      image: flask-k8s-app
+      imagePullPolicy: Always
+      name: flask-container
+      ports:
+      - containerPort: 5000
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /data
+        name: flask-storage
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-hdgh9
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: flask-storage
+      persistentVolumeClaim:
+        claimName: flask-pvc
+    - name: kube-api-access-hdgh9
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-04-30T23:57:29Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-04-30T23:57:20Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-04-30T23:57:20Z"
+      message: 'containers with unready status: [flask-container]'
+      reason: ContainersNotReady
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-04-30T23:57:20Z"
+      message: 'containers with unready status: [flask-container]'
+      reason: ContainersNotReady
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-04-30T23:57:20Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - image: flask-k8s-app
+      imageID: ""
+      lastState: {}
+      name: flask-container
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        waiting:
+          message: 'Back-off pulling image "flask-k8s-app": ErrImagePull: Error response
+            from daemon: pull access denied for flask-k8s-app, repository does not
+            exist or may require ''docker login'': denied: requested access to the
+            resource is denied'
+          reason: ImagePullBackOff
+      volumeMounts:
+      - mountPath: /data
+        name: flask-storage
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-hdgh9
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.49.2
+    hostIPs:
+    - ip: 192.168.49.2
+    phase: Pending
+    podIP: 10.244.0.39
+    podIPs:
+    - ip: 10.244.0.39
+    qosClass: BestEffort
+    startTime: "2025-04-30T23:57:20Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-04-30T23:57:20Z"
+    generateName: flask-k8s-deployment-6cf6cff6dd-
+    labels:
+      app: flask-k8s
+      pod-template-hash: 6cf6cff6dd
+    name: flask-k8s-deployment-6cf6cff6dd-fxzhj
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: flask-k8s-deployment-6cf6cff6dd
+      uid: c9246687-a6ca-454b-b0f1-9ccdd5f62c1d
+    resourceVersion: "45981"
+    uid: f9df54ba-6797-4634-8a6b-3deecb2b27e6
+  spec:
+    containers:
+    - env:
+      - name: MESSAGE
+        valueFrom:
+          configMapKeyRef:
+            key: MESSAGE
+            name: flask-config
+      - name: DB_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            key: DB_PASSWORD
+            name: flask-secret
+      image: flask-k8s-app
+      imagePullPolicy: Always
+      name: flask-container
+      ports:
+      - containerPort: 5000
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /data
+        name: flask-storage
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-8575x
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: flask-storage
+      persistentVolumeClaim:
+        claimName: flask-pvc
+    - name: kube-api-access-8575x
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-04-30T23:57:25Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-04-30T23:57:20Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-04-30T23:57:20Z"
+      message: 'containers with unready status: [flask-container]'
+      reason: ContainersNotReady
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-04-30T23:57:20Z"
+      message: 'containers with unready status: [flask-container]'
+      reason: ContainersNotReady
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-04-30T23:57:20Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - image: flask-k8s-app
+      imageID: ""
+      lastState: {}
+      name: flask-container
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        waiting:
+          message: 'Back-off pulling image "flask-k8s-app": ErrImagePull: Error response
+            from daemon: pull access denied for flask-k8s-app, repository does not
+            exist or may require ''docker login'': denied: requested access to the
+            resource is denied'
+          reason: ImagePullBackOff
+      volumeMounts:
+      - mountPath: /data
+        name: flask-storage
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-8575x
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.49.2
+    hostIPs:
+    - ip: 192.168.49.2
+    phase: Pending
+    podIP: 10.244.0.38
+    podIPs:
+    - ip: 10.244.0.38
+    qosClass: BestEffort
+    startTime: "2025-04-30T23:57:20Z"
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"flask-k8s-service","namespace":"default"},"spec":{"ports":[{"nodePort":30007,"port":5000,"targetPort":5000}],"selector":{"app":"flask-k8s"},"type":"NodePort"}}
+    creationTimestamp: "2025-04-30T23:41:37Z"
+    name: flask-k8s-service
+    namespace: default
+    resourceVersion: "39202"
+    uid: 4fec0e6c-d3bc-438c-b1a1-e35610a4f753
+  spec:
+    clusterIP: 10.105.203.203
+    clusterIPs:
+    - 10.105.203.203
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - nodePort: 30007
+      port: 5000
+      protocol: TCP
+      targetPort: 5000
+    selector:
+      app: flask-k8s
+    sessionAffinity: None
+    type: NodePort
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2025-04-25T01:59:56Z"
+    labels:
+      component: apiserver
+      provider: kubernetes
+    name: kubernetes
+    namespace: default
+    resourceVersion: "242"
+    uid: 7a6981b7-1e87-4c5a-831b-e6b4fb816073
+  spec:
+    clusterIP: 10.96.0.1
+    clusterIPs:
+    - 10.96.0.1
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 8443
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"flask-k8s-deployment","namespace":"default"},"spec":{"replicas":2,"selector":{"matchLabels":{"app":"flask-k8s"}},"template":{"metadata":{"labels":{"app":"flask-k8s"}},"spec":{"containers":[{"env":[{"name":"MESSAGE","valueFrom":{"configMapKeyRef":{"key":"MESSAGE","name":"flask-config"}}},{"name":"DB_PASSWORD","valueFrom":{"secretKeyRef":{"key":"DB_PASSWORD","name":"flask-secret"}}}],"image":"flask-k8s-app","name":"flask-container","ports":[{"containerPort":5000}],"volumeMounts":[{"mountPath":"/data","name":"flask-storage"}]}],"volumes":[{"name":"flask-storage","persistentVolumeClaim":{"claimName":"flask-pvc"}}]}}}}
+    creationTimestamp: "2025-04-30T23:57:20Z"
+    generation: 1
+    name: flask-k8s-deployment
+    namespace: default
+    resourceVersion: "40787"
+    uid: 4de80104-b058-4ce4-ab5b-f34bd5eff1fa
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 2
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: flask-k8s
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: flask-k8s
+      spec:
+        containers:
+        - env:
+          - name: MESSAGE
+            valueFrom:
+              configMapKeyRef:
+                key: MESSAGE
+                name: flask-config
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: DB_PASSWORD
+                name: flask-secret
+          image: flask-k8s-app
+          imagePullPolicy: Always
+          name: flask-container
+          ports:
+          - containerPort: 5000
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /data
+            name: flask-storage
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: flask-storage
+          persistentVolumeClaim:
+            claimName: flask-pvc
+  status:
+    conditions:
+    - lastTransitionTime: "2025-04-30T23:57:20Z"
+      lastUpdateTime: "2025-04-30T23:57:20Z"
+      message: Deployment does not have minimum availability.
+      reason: MinimumReplicasUnavailable
+      status: "False"
+      type: Available
+    - lastTransitionTime: "2025-05-01T00:07:20Z"
+      lastUpdateTime: "2025-05-01T00:07:20Z"
+      message: ReplicaSet "flask-k8s-deployment-6cf6cff6dd" has timed out progressing.
+      reason: ProgressDeadlineExceeded
+      status: "False"
+      type: Progressing
+    observedGeneration: 1
+    replicas: 2
+    unavailableReplicas: 2
+    updatedReplicas: 2
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "2"
+      deployment.kubernetes.io/max-replicas: "3"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2025-04-30T23:57:20Z"
+    generation: 1
+    labels:
+      app: flask-k8s
+      pod-template-hash: 6cf6cff6dd
+    name: flask-k8s-deployment-6cf6cff6dd
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: flask-k8s-deployment
+      uid: 4de80104-b058-4ce4-ab5b-f34bd5eff1fa
+    resourceVersion: "40173"
+    uid: c9246687-a6ca-454b-b0f1-9ccdd5f62c1d
+  spec:
+    replicas: 2
+    selector:
+      matchLabels:
+        app: flask-k8s
+        pod-template-hash: 6cf6cff6dd
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: flask-k8s
+          pod-template-hash: 6cf6cff6dd
+      spec:
+        containers:
+        - env:
+          - name: MESSAGE
+            valueFrom:
+              configMapKeyRef:
+                key: MESSAGE
+                name: flask-config
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: DB_PASSWORD
+                name: flask-secret
+          image: flask-k8s-app
+          imagePullPolicy: Always
+          name: flask-container
+          ports:
+          - containerPort: 5000
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /data
+            name: flask-storage
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: flask-storage
+          persistentVolumeClaim:
+            claimName: flask-pvc
+  status:
+    fullyLabeledReplicas: 2
+    observedGeneration: 1
+    replicas: 2
+kind: List
+metadata:
+  resourceVersion: ""
